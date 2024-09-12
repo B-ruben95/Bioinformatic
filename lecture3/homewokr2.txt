@@ -1,11 +1,31 @@
+BMMB 852 Demonstrate data analysis at UNIX command line
+
+Ruben Martin
+
+I download the giant panda genome from http://ftp.ensembl.org/pub/current_gff3/.
+
+wget http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/
+--2024-09-12 10:39:10--  http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/
+Resolving ftp.ensembl.org (ftp.ensembl.org)... 193.62.193.169
+Connecting to ftp.ensembl.org (ftp.ensembl.org)|193.62.193.169|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'index.html'
+
+index.html              [ <=>                ]   8.41K  --.-KB/s    in 0.001s  
+
+2024-09-08 10:39:11 (10.4 MB/s) - 'index.html' saved [8616]
+
+
 1. Tell us a bit about the organism.
 The file I chose was "Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz," which corresponds to the giant panda. This mammal is endemic to China and is one of the most endangered species of mammals in the world due to its limited geographical range and deforestation.
 
 2. How many features does the file contain?
+
     $ cat Ailuropoda_melanoleuca.ASM200744v2.112.gff3 | grep -v "^#" | wc -l
     1283346
 
-The gff3 file of the the panda have 128 3346 features. 
+The gff3 file of the panda have 128 3346 features. 
 
 3.How many sequence regions (chromosomes) does the file contain?
     $ cat Ailuropoda_melanoleuca.ASM200744v2.112.gff3 | grep sequence-region | wc -l
