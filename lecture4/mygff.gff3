@@ -1,0 +1,4 @@
+NC_000913.3	.	gene 	523260	527541	.	+	.	Parent=transcript1;ID=gene1
+NC_000913.3	.	gene 	527581	527949	.	+	.	Parent=transcript1;ID=gene2
+
+
