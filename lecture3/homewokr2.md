@@ -2,24 +2,24 @@
 
 Ruben Martin
 
-I download the giant panda genome from http://ftp.ensembl.org/pub/current_gff3/.
+I download the giant panda genome from http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz
 
 to downlaod the file i used this command: 
 ```bash
-wget http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/
+wget http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz
 ```
 it print this 
 ```bash
---2024-09-08 10:39:10--  http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/
+--2024-09-20 10:50:12--  http://ftp.ensembl.org/pub/current_gff3/ailuropoda_melanoleuca/Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz
 Resolving ftp.ensembl.org (ftp.ensembl.org)... 193.62.193.169
 Connecting to ftp.ensembl.org (ftp.ensembl.org)|193.62.193.169|:80... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: unspecified [text/html]
-Saving to: 'index.html'
+Length: 16196592 (15M) [application/x-gzip]
+Saving to: 'Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz'
 
-index.html              [ <=>                ]   8.41K  --.-KB/s    in 0.001s  
+Ailuropoda_melanole 100%[===================>]  15.45M   682KB/s    in 23s     
 
-2024-09-08 10:39:11 (10.4 MB/s) - 'index.html' saved [8616]
+2024-09-20 10:50:36 (687 KB/s) - 'Ailuropoda_melanoleuca.ASM200744v2.112.gff3.gz' saved [16196592/16196592]
 ```
 
 1. **Tell us a bit about the organism.**
