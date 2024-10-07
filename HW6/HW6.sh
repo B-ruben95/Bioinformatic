@@ -13,11 +13,11 @@ TRIMMED2=READS/${NCBI}_2.fastq.trimmed.fastq
 
 
 #make a directory for the data
-#mkdir -p READS REPORTS
+mkdir -p READS REPORTS
 
 
 #Download the data
-#fastq-dump --split-files $NCBI -O READS
+fastq-dump --split-files $NCBI -O READS
 echo "The data have been downloaded"
 
 #Quality control
