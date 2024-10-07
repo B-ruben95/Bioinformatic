@@ -9,6 +9,7 @@ A paper uses data from this project, but it only includes vertebrates in its ana
 The sequencing quality is not very high, as the reads contain Illumina adapters. Below are the quality control results for Read 1 and Read 2.
 
 Read 1 Quality
+
 ![Q](https://github.com/B-ruben95/Bioinformatic/blob/main/HW6/Image/Q.jpg?raw=true)
 
 Adapters in the Data
@@ -16,6 +17,7 @@ Adapters in the Data
 
 
 Read 2 Quality
+
 ![Q2](https://github.com/B-ruben95/Bioinformatic/blob/main/HW6/Image/Quality_Read2.png?raw=true)
 
 
@@ -28,8 +30,8 @@ After quality improvement, Read 1 shows better results than Read 2. However, Rea
 Both reads still require better trimming at the beginning of the sequences. Bases 1 to 6 contain some errors.
 
 Trimmed Read 1
-![adapter](https://github.com/B-ruben95/Bioinformatic/blob/main/HW6/Image/Trimmed1.png?raw=true)
 
+![adapter](https://github.com/B-ruben95/Bioinformatic/blob/main/HW6/Image/Trimmed1.png?raw=true)
 
 
 ![adapter](https://github.com/B-ruben95/Bioinformatic/blob/main/HW6/Image/Screenshot%202024-10-07%20at%2000.43.51.png?raw=true)
