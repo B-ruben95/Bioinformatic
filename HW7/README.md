@@ -1,7 +1,7 @@
 # Week 7: Write a Makefile
 **Ruben Martin 
 
-In this part of the file i define the variable that will be use, I divide the variable in the diferent homeworks
+In this section, I define the variables that will be used. I organize the variables according to the different homework assignments.
 ```bash
 #Variables
 
@@ -23,7 +23,7 @@ TRIMMED1=READS/${SRA}_1.fastq.trimmed.fastq
 TRIMMED2=READS/${SRA}_2.fastq.trimmed.fastq
 ```
 
-Here i discribe the difirent targest that will run in and what they do 
+Below, I describe the different targets and their corresponding functionality:
 ``` bash
 usage:
 	@echo "make genome  # download the genome file"
@@ -36,7 +36,7 @@ usage:
 	@echo "make clean     # remove the downloaded files"
 ```
 
-This target will downaload the genome 
+This target downloads the genome.
 ```bash
 genome:
 	datasets download genome accession ${NCBI} --include ${TYPE}
@@ -44,7 +44,7 @@ genome:
 	unzip ncbi_dataset.zip
 ```
 
-This target will generate some stadistics about the genome 
+This target generates basic statistics for the genome.
 ```bash
 stadistics:
 	SIZE=$(du -h ${GENOME} | cut -f1)
@@ -56,7 +56,7 @@ stadistics:
 	awk '/^>/ {if (seqlen){print seqname, seqlen}; seqname=$1; sub(/^>/, "", seqname); seqlen=0; next} {seqlen += length($0)} END {print seqname, seqlen}' ${GENOME} 
 ```
 
-This target will generate the simulation for one of the chromosomes of the genome
+This target simulates reads from chromosome 7 of the genome.
 
 ```bash
 simulate:
@@ -73,7 +73,7 @@ simulate:
 	@echo "The size of the reads is ${SIZE_R1} and ${SIZE_R2}"
 ```
 
-This target creata two directories to store the data and download the data for the SRA database
+This target creates directories for storing data and downloads data from the SRA database.
 ```bash
 download:
 	@echo make a directory for the data
@@ -83,7 +83,7 @@ download:
 	@echo "The data have been downloaded"
 ```
 
-This target will generate the quality control for the data
+This target performs quality control on the downloaded data.
 ```bash
 quality:
 	#Quality control
@@ -91,7 +91,7 @@ quality:
 	@echo "Quality control done"
 ```
 
-This target will cut the adapters and generate reads of best quality 
+This target trims adapters from the reads and performs additional quality control.
 ```bash
 trim:
 	fastp -i ${FASTQ1} -I ${FASTQ2} -o ${TRIMMED1} -O ${TRIMMED2} \
@@ -101,19 +101,20 @@ trim:
 	fastqc -q -o REPORTS ${TRIMMED1} ${TRIMMED2}
 	@echo "Quality control done"
 ```
-This target will generate a multiqc analysis 
+This target runs MultiQC to aggregate the results from FastQC.
 ```bash
 multiqc:
 	micromamba run -n menv multiqc -o READS REPORTS 
 	@echo "Multiqc done"
 ```
-This target will clean the directory 
+
+This target cleans up the directories by removing downloaded files.
 ```bash
 clean:
 	rm -rf READS REPORTS ncbi_dataset
 	@echo "All files have been removed"
 ```
-This target will exectute the hold script
+This ensures that these targets are always executed when called, even if files with the same names exist.
 
 ```bash
 .PHONY: genome stadistics simulate download quality trim multiqc
