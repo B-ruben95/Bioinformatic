@@ -1,5 +1,4 @@
 
-#This is a makefile for the analysis of the data from the SRA database
 #Variables
 
 #variables of the homework 5
@@ -80,14 +79,14 @@ trim:
 	@echo "Quality control done"
 
 multiqc:
-	micromamba run -n menv multiqc -o ${TRIMMED1} ${TRIMMED2}
+	micromamba run -n menv multiqc -o READS REPORTS 
 	@echo "Multiqc done"
 
 clean:
 	rm -rf READS REPORTS
 	@echo "All files have been removed"
 
-.PHONY: genome stadistics simulate download quality trim multiqc clean
+.PHONY: genome stadistics simulate download quality trim multiqc 
 
 
 
