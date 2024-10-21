@@ -9,27 +9,41 @@ R1=reads/${SRA}_1.fastq
 R2=reads/${SRA}_2.fastq
 RS1=reads/simulated/b_terrestris_ch7.fastq
 RS2=reads/simulated/b_terrestris_ch7_2.fastq
-N=10000000
+N=1000000
 BAM=bam/b_terrestris.bam
 BAMS=bam/simulate/b_terrestris_ch7.bam
+
+SHELL = bash
+.ONESHELL:
+.SHELLFLAGS = -eu -o pipefail -c
+.DELETE_ON_ERROR:
+MAKEFLAGS += --warn-undefined-variables
+MAKEFLAGS += --no-builtin-rules
+================================================================================================
+
 info:
-	@echo
-
+	@echo "make download # download the references genome"
+	@echo "make index # index the reference genome"
+	@echo "make align # align the reads"
+	@echo "make simulate # simulate the reads and align them"
+	@echo "make stats # generate the stats for the reads and the simulated reads"
+	@echo "make clean # remove the files"
+	
 download:
-
 	#make the directory for the reference genome
-	#mkdir -p $(dir ${REF})
+	mkdir -p $(dir ${REF})
+	#download the reference genome
+	datasets download genome accession ${genome}
+	#unzip the file
+	unzip -n ncbi_dataset.zip -x README.md md5sum.txt
+	#copy the reference genome to the ref directory
+	cp -f ncbi_dataset/data/${genome}/*_genomic.fna ${REF}
+	
+fastq:
 	#make the directory for the reads
 	mkdir -p $(dir ${R1})
-	#download the reference genome
-	#datasets download genome accession ${genome}
-	#unzip the file
-	#unzip -n ncbi_dataset.zip -x README.md md5sum.txt
 	#download the SRA file
-	fastq-dump -X ${N}
-	3 --outdir reads --split-files ${SRA}  #i deleated the -X ${N} because the aligment was to smal 
-	#copy the reference genome to the ref directory
-	#cp -f ncbi_dataset/data/${genome}/*_genomic.fna ${REF}
+	fastq-dump -X ${N} --outdir reads --split-files ${SRA} 	
 	
 index: 
 	mkdir -p ref
@@ -64,8 +78,8 @@ stats:
 	samtools flagstat ${BAM}
 	#generate the stats for the simulated bam file
 	samtools flagstat ${BAMS}
-	
+
 clean:
 	rm -rf ${REF} ${R1} ${R2} ${BAM} ${BAM}.bai
 	
-.PHONY: download align stats
+.PHONY: download index align simulate stats info
