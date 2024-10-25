@@ -16,6 +16,13 @@ SHELL = bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 ================================================================================================
+info: 
+	@echo "make download # download the references genome"
+	@echo "make index # index the reference genome"
+	@echo "make align # align the reads"
+	@echo "make flagstat # generate the diferent flag stat for the bam file"
+	@echo "make q10 # create a new bam file with a minimum mapping quality of 10"
+	@echo "make clean # remove the files"
 
 download:
 	# make the directory for the reference genome
@@ -68,3 +75,12 @@ q10:
 	# compare the flagstat of the original bam file and the q10 bam file
 	samtools flagstat ${BAM}
 	samtools flagstat ${Q10}
+
+clean:
+	rm -rf ref
+	rm -rf reads
+	rm -rf bam
+	rm -rf ncbi_dataset.zip
+	rm -rf ncbi_dataset
+
+.PHONY: download fastq index align flagstat q10 
