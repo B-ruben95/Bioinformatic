@@ -11,7 +11,7 @@ samtools view -c -f 4 ${BAM}
 ```
 107185
 ```
-107,185 reads didt alling to the references genome 
+107,185 reads did not align to the reference genome.
 
 2. How many primary, secondary, and supplementary alignments are in the BAM file?
 * primary aligments 
