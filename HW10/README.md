@@ -1,7 +1,7 @@
 # Week 10: Generate a variant call file
 **Ruben Martin**
 
-The [makefile](https://) containt all the command to call the variant of this this SRA SRR3693403 of Bombus terrestris
+The [makefile](https://https://github.com/B-ruben95/Bioinformatic/blob/main/HW10/Makefile) containt all the command to call the variant of this this SRA SRR3693403 of Bombus terrestris
 
 ## Variant calling
 
