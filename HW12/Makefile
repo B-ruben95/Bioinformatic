@@ -1,19 +1,23 @@
 
-
+# Accession number of the ebola genome.
 GENOME=GCF_910591885.1
+# The sequencing read accession number.
 SRA?=
+# The number of reads to get
 N=1000000
-
+# The reference file
 REF=ref/b_terrestris.fna
+# The path to read 1
 R1=reads/${SRA}_1.fastq
+# The path to read 2
 R2=reads/${SRA}_2.fastq
-
+# The GFF file.
 GFF=ref/b_terrestris.gff
-
+# The name of the sample
 SAMPLE?=I-D1
-
+# The resulting BAM file.
 BAM=bam/b_terrestris_${SRA}.bam
-
+# The resulting variant VCF file
 VCF=vcf/b_terrestris_${SRA}.vcf.gz
 
 # Additional flags for mpileup.
@@ -36,6 +40,17 @@ info:
 	@echo "make flagstat # generate the different flag stat for the bam file"
 	@echo "make q10 # create a new bam file with a minimum mapping quality of 10"
 	@echo "make clean # remove the files"
+
+check_files:
+	@if [ ! -f ref/b_terrestris.fna ] || [ ! -f ref/b_terrestris.fna.bwt ]; then \
+		echo "#"; \
+		echo "# Please download and index the genome first with: make download index"; \
+		echo "#"; \
+		exit 1; \
+	fi
+
+all: check_files fastq align variant
+
 
 all: fastq align variant
 
