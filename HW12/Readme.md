@@ -25,7 +25,7 @@ The Makefile consists of the following targets:
 * `merge`: Merges all the variants into a single file.
 * `stats`: Generates statistics for the merged file.
 
-The target `all` executes only `download`, `index`, `fastq`, `align`, and `variant` because it is necessary to first generate all the VCF files for the samples before merging them into one file.
+The target `all` executes only `fastq`, `align`, and `variant`. However, it is necessary to execute `download` and `index` first for the automation to work correctly. The `merge` and `stats` targets can be executed after the automation ends because it is necessary to first generate all the VCF files for the samples before merging them into one file.
 
 ## Run the Makefile Using GNU Parallel
 The Makefile can be executed in parallel using the following command:
