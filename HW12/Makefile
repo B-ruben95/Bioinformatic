@@ -106,6 +106,14 @@ merge:
 	# Index the merged VCF file
 	bcftools index merged.vcf.gz
 
+stats:	
+	@grep "SN[[:space:]]0[[:space:]]number of samples" merged_stats_report.txt | awk '{print "    Samples:", $$6}'
+	@grep "SN[[:space:]]0[[:space:]]number of SNPs" merged_stats_report.txt | awk '{print "    SNPs:", $$6}'
+	@grep "SN[[:space:]]0[[:space:]]number of indels" merged_stats_report.txt | awk '{print "    Indels:", $$6}'
+	@grep "SN[[:space:]]0[[:space:]]number of records" merged_stats_report.txt | awk '{print "    Total Variants:", $$6}'
+	@gunzip -c merged.vcf.gz | grep -v "^#" | awk '{ if ($$6 > 30) print }' | wc -l | awk '{print "    Variants > 30:", $$1}'
+
+
 clean:
 	rm -rf ref
 	rm -rf reads
