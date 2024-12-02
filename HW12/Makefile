@@ -1,5 +1,5 @@
 
-# Accession number of the ebola genome.
+# Accession number of Bombus terrestris genome.
 GENOME=GCF_910591885.1
 # The sequencing read accession number.
 SRA?=
